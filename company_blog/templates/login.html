@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+
+<!-- {# {% load static %} #} -->
+{% block head %}
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+      <!-- {# <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}"> #} -->
+{% endblock %}
+
+
+
+{% block content %}
+
+{% for field, errors in form.errors.items() %}
+<div class="flash alert alert-danger">{{ ' '.join(errors) }}</div>
+{% endfor %}
+
+{# 
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+    <ul class="flashes">
+        {% for message in messages %}
+        <div class="{{success}} alert alert-success d-inline-block">{{ message }}</div>
+        {% endfor %}
+</ul>
+{% endif %}
+{% endwith %} #}
+
+
+{% if error%}
+<div class="flash alert alert-danger">{{error}}</div>
+{% endif%}
+
+
+<!-- {# <div class="jumbotron">
+    <div class="mb-3">
+        <form method="POST">
+        {{form.hidden_tag()}}
+         <div class="user-box">
+            {{form.email.label(class="form-label")}}{{form.email(class="col-md-6 form-control")}}<br>
+         </div>
+        <div class="user-box">
+            {{form.password.label(class="form-label")}}{{form.password(class="col-md-6 form-control")}}<br>
+        </div>
+        <a href="#">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            {{form.submit(class="btn btn-primary")}}
+        </a>
+        
+        </form>
+    </div>
+</div> #} -->
+
+
+
+
+<!-- {# <div class="login-box">
+    <h2>Login</h2>
+    <form method="POST">
+        {{form.hidden_tag()}}
+        <div class="user-box">
+            {{form.email.label(class='label')}}{{form.email(class=label)}}<br>
+        </div>
+        <div class="user-box">
+            {{form.password.label(class='label')}}{{form.password(class='label')}}<br>
+        </div>
+        <a href="#">
+            {{form.submit(class='label')}}
+        </a>  
+    </form>
+</div> #} -->
+
+
+<!-- 
+<div class="login-box">
+    <h2>Login</h2>
+    <form action="{{ url_for('users.login')}}" method="POST">
+        <div class="user-box">
+        <input type="text" name="email" required="">
+        <label>Email</label>
+        </div>
+        <div class="user-box">
+        <input type="password" name="password" required="">
+        <label>Password</label>
+        </div>
+        
+    </form>
+</div>  -->
+
+
+
+
+<body style="min-height: 100%;">
+    <div class="login-box">
+        <h2>Login</h2>
+        <form method="POST">
+        <div class="user-box">
+            {{form.hidden_tag()}}
+            <div class="user-box">
+            {{form.email(class='input',autocomplete="off")}}
+            {{form.email.label(class="label")}}
+            </div>
+            <div class="user-box">
+            {{form.password(class="input",autocomplete="off")}}
+            {{form.password.label(class="label")}}
+            </div>
+            <a class="login_btn" href="">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                {{form.submit(class="btn bg-transparent btn-outline-primary")}}
+            </a>
+        </div>
+        </form>        
+    </div>
+</body>
+
+
+
+
+
+
+<!-- <div class="login-box">
+    <h2>Login</h2>
+    <form>
+      <div class="user-box">
+        <input type="text" name="" required="">
+        <label>Username</label>
+      </div>
+      <div class="user-box">
+        <input type="password" name="" required="">
+        <label>Password</label>
+      </div>
+      <a href="#">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        Submit
+      </a>
+    </form>
+  </div> -->
+
+
+
+
+
+{% endblock  %}

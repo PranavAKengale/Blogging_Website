@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% block head %}
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
+      <!-- {# <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}"> #} -->
+{% endblock %}
+
+<!-- <div class="jumbotron">
+    <div>
+        {% for field, errors in form.errors.items() %}
+        <div class="flash alert alert-danger">{{ ', '.join(errors) }}</div>
+        {% endfor %}
+        <form action="{{url_for('users.register')}}" method="POST">
+        {{form.hidden_tag()}}
+        {{form.email.label(class="form-label")}} {{form.email(class="col-md-6 form-control")}}<br>
+        {{form.username.label(class="form-label")}} {{form.username(class="col-md-6 form-control")}}<br>
+        {{form.password.label(class="form-label")}} {{form.password(class="col-md-6 form-control")}}<br>
+        {{form.pass_confirm.label(class="form-label")}} {{form.pass_confirm(class="col-md-6 form-control")}}<br>
+        {{form.submit(class="btn btn-primary")}}
+        </form>
+    </div>
+</div> -->
+
+<body style="min-height: 100%;">
+    <div class="register-box new-try">
+        <h2>Register</h2>
+        <form method="POST">
+            <div class="user-box">
+                {{form.hidden_tag()}}
+                <div class="user-box">
+                {{form.email(class='input',autocomplete="off")}}
+                {{form.email.label(class="label")}}
+                </div>
+                <div class="user-box">
+                    {{form.username(class='input',autocomplete="off")}}
+                    {{form.username.label(class="label")}}
+                </div>
+                <div class="user-box">
+                {{form.password(class="input",autocomplete="off")}}
+                {{form.password.label(class="label")}}
+                </div>
+                <div class="user-box">
+                    {{form.pass_confirm(class="input",autocomplete="off")}}
+                    {{form.pass_confirm.label(class="label")}}
+                </div>
+                <a class="register_btn" href="">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    {{form.submit(class="btn bg-transparent btn-outline-primary")}}
+                </a>
+            </div>
+        </form> 
+    </div>
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock  %}

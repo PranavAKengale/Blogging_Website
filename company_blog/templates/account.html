@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% for field, errors in form.errors.items() %}
+        <div class="flash alert alert-danger">{{ ', '.join(errors) }}</div>
+{% endfor %}
+
+{# {% with messages = get_flashed_messages() %}
+   {% if messages %}
+    <ul class="flashes alert alert-success d-inline-block">
+        {% for message in messages %}
+        <div class="{{success}} ">{{ message }}</div>
+        {% endfor %}
+    </ul>
+  {% endif %}
+ {% endwith %} #}
+
+{# {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <li class="alert alert-info alert-dismissible col-md-3">{{ message }}</li>
+    {% endfor %}  
+  {% endif %}
+{% endwith %} #}
+
+
+
+<div class="jumbotron bg-white">
+  <div align='center'>
+    <h1 style="font-family:'Source Serif Pro',Times, serif; font-weight: 900; font-size:50px;">Account Details: {{current_user.username |capitalize}}!</h1>
+    <img align='center' class="rouded-circle account-img" src="{{ url_for('static', filename='profile_pics/' + current_user.profile_image) }}">
+  </div>
+</div>
+<div class="jumbotron bg-white">
+  <form  method="POST" action = "" enctype="multipart/form-data">
+    {{ form.hidden_tag()}}
+    <div class="form-group" style="font-family: 'Merriweather'; font-size: 17px;">
+      {{ form.username.label(class="form-group") }}
+      {{form.username(class='form-control')  }}
+      <br>
+    </div>
+    <div class="form-group" style="font-family: 'Merriweather'; font-size: 17px;">
+      {{ form.email.label(class="form-group") }}
+      {{form.email(class='form-control')  }}
+      <br>
+    </div>
+    <div class="form-group" style="font-family: 'Merriweather'; font-size: 17px;">
+      {{ form.picture.label(class="form-group") }}
+      {{ form.picture(class="form-control-file") }}
+      <br>
+    </div>
+    <div class="form-group" style="font-family: 'Merriweather'; font-size: 17px;">
+        {{ form.submit(class="btn btn-primary") }}
+    </div>
+  </form>
+</div>
+
+{% endblock  %}
